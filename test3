@@ -1,0 +1,60 @@
+class Story:
+    def __init__(self, title, description, status='To Do'):
+        self.title = title
+        self.description = description
+        self.status = status
+
+    def update_status(self, new_status):
+        self.status = new_status
+
+    def __str__(self):
+        return f"Story: {self.title}, Status: {self.status}"
+
+
+class Epic:
+    def __init__(self, title):
+        self.title = title
+        self.stories = []
+
+    def add_story(self, story):
+        self.stories.append(story)
+
+    def get_stories(self):
+        return self.stories
+
+    def __str__(self):
+        return f"Epic: {self.title}, Stories: {len(self.stories)}"
+
+
+# Create Epic
+launch_epic = Epic("Lancement - Mars 2050")
+
+# Create Stories
+story1 = Story("Mettre à jour la plage de dates pour inclure les dates du lancement de mars 2050",
+               "Analyser les dates actuelles et les besoins de mise à jour.")
+story2 = Story("Réduire le temps de chargement des listes de vols demandées à < 0,45 seconde",
+               "Optimiser les requêtes et mettre en cache les données.")
+story3 = Story("Promouvoir les soldes d'été pour Saturne sur la page de confirmation des réservations en première classe",
+               "Créer les éléments graphiques et textuels pour la promotion.")
+story4 = Story("Maintenir la concentration des réservoirs de carburant à plus de 250 PPM au lancement",
+               "Mettre en place un système de suivi de la concentration.")
+story5 = Story("Réduire la consommation globale de carburant de 1 %",
+               "Identifier les sources potentielles d’économie de carburant.")
+story6 = Story("Embaucher un nouvel ingénieur en propulsion pour remplacer Gary",
+               "Rédiger et publier l’offre d’emploi.")
+
+# Add Stories to Epic
+launch_epic.add_story(story1)
+launch_epic.add_story(story2)
+launch_epic.add_story(story3)
+launch_epic.add_story(story4)
+launch_epic.add_story(story5)
+launch_epic.add_story(story6)
+
+# Update status of a story
+story1.update_status('In Progress')
+
+# Print Epic and Stories
+print(launch_epic)
+for story in launch_epic.get_stories():
+    print(story)
